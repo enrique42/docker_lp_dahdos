@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46.136" height="51.741" viewBox="0 0 46.136 51.741">
+  <g id="hamburguer" transform="translate(-164.432 -156.389)">
+    <g id="Group_11554" data-name="Group 11554" transform="translate(165.932 158)">
+      <path id="Path_17923" data-name="Path 17923" d="M3.115,39.026a4.187,4.187,0,0,1-1.888-3.267L1.218,15.217A4.186,4.186,0,0,1,3.1,11.948L20.889,1.669a4.185,4.185,0,0,1,3.773,0L42.457,11.931A4.186,4.186,0,0,1,44.345,15.2l.009,20.542a4.186,4.186,0,0,1-1.885,3.269L24.683,49.288a4.187,4.187,0,0,1-3.774,0Z" transform="translate(-1.218 -1.219)" fill="#5e415c" stroke="#5e415c" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+    <g id="Group_11555" data-name="Group 11555" transform="translate(132.34 123.822)">
+      <line id="Line_171" data-name="Line 171" x2="13.949" transform="translate(48.593 51.177)" fill="none" stroke="#f0f4e8" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_172" data-name="Line 172" x2="13.949" transform="translate(48.593 58.177)" fill="none" stroke="#f0f4e8" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_173" data-name="Line 173" x2="13.949" transform="translate(48.593 65.177)" fill="none" stroke="#f0f4e8" stroke-linecap="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

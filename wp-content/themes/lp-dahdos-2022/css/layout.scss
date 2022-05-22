@@ -1,0 +1,156 @@
+
+$wtotal: 100vw;
+//DESKTOP
+$numcols: 12;
+$wutil: 77.6vw;
+
+//PORTRAIT
+$numcolsresp: 6;
+$wutilresp: 80vw;
+
+//LANDSCAPE
+$numcolsland: 8;
+$wutilland: 90vw;
+
+//Margens laterais
+$pl: ($wtotal - $wutil)/2;
+$plr: ($wtotal - $wutilresp)/2;
+$pll: ($wtotal - $wutilland)/2;
+
+//gutter geral
+$gutter: 1vw;
+$gresp: 1vw;
+$gland: 1vw;
+
+// Calculando layout desktop (modelo VW)
+$col: ($wutil - ($numcols - 1)*$gutter)/$numcols;
+@function colunas($ncol){
+	@return ($ncol*$col + ($ncol - 1)*$gutter);
+}
+
+// Calculando layout mobile portrait (modelo VW)
+$coluresp: ($wutilresp - ($numcolsresp - 1)*$gresp)/$numcolsresp;
+@function colresp($ncol){
+	@return ($ncol*$coluresp + ($ncol - 1)*$gresp);
+}
+
+// Calculando layout mobile landscape (modelo VW)
+$coluland: ($wutilland - ($numcolsland - 1)*$gland)/$numcolsland;
+@function coland($ncol){
+	@return ($ncol*$coluland + ($ncol - 1)*$gland);
+}
+
+$uma: colunas(1);
+$umag: colunas(1) + $gutter;
+$meia: colunas(1)/2;
+$terco: colunas(1)/3;
+$quarto: colunas(1)/4;
+
+$pt: 8rem;
+$ptr: 6rem;
+$ptrh: $ptr/2;
+
+
+.section{
+    width: 100%;
+    height: auto;
+    @include fsize(1.6);
+	line-height: 1.6;
+    background-color: transparent;
+    &.telacheia{
+        width: 100%;
+        height: 100vh;
+    }
+    .container{
+        width: 100%;
+        margin: 0 auto;
+        padding-left: $pl;
+        padding-right: $pl;
+        @include bp($mobile){
+            padding-left: $plr;
+            padding-right: $plr;
+        }
+		@include bpland($ipadport) {
+			padding-left: $pll;
+            padding-right: $pll;
+		}
+    }    
+}
+
+//Padrão para colunas flex
+.layout-flex, .lf{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    &.ais{  align-items: stretch; }
+    &.aifs{ align-items: flex-start; }
+    &.aife{ align-items: flex-end; }
+    &.jcsb{ justify-content: space-between; }
+    &.jcsa{ justify-content: space-around; }
+    &.jcfs{ justify-content: flex-start; }
+    &.jcfe{ justify-content: flex-end; }
+    .bloco-imagem{
+        img{ width: 100%; display: block; }
+    }
+    .full{ width: 100% !important; }
+}
+
+//Colunas no desktop
+@for $i from 1 through 12 {
+	.coluna-#{$i} {
+		width: colunas($i); 
+		@include bp($mobile) {
+			width: 100%;
+		}  
+	}
+}
+
+.coluna-card{
+	width: colunas(4) - 0.15vw;
+	@include bp($mobile) {
+		width: 100%;
+	}
+}
+
+.coluna-3half{
+	width: colunas(3) + $meia;
+	@include bp($mobile) {
+		width: 100%;
+	}
+}
+
+//Colunas mobile padrão (portrait)
+@for $i from 1 through 6 {
+	@include bp($mobile){
+		.mobile-#{$i} {
+			width: colresp($i);   
+		}
+	}
+}
+
+//Colunas mobile landspace
+@for $i from 1 through 8 {
+	@include bpland($ipadport) {
+		.landscape-#{$i} {
+			width: coland($i);   
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+	.mb#{$i} {
+		margin-bottom: $i * 1rem; 
+		@include bp($mobile) {
+			margin-bottom: $i * 0.5rem; 
+		}  
+	}
+}
+
+.tac{
+	text-align: center;
+}
+
+.nowrap{
+	white-space: nowrap;
+}

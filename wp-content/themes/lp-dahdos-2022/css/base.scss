@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+// ================================================
+// Plugins e Frameworks de SASS
+// ================================================
+
+//cores base
+$texto: #323232;
+$preto: #000;
+$tpreto: #000;
+$tclaro: #666F77;
+$claro: #F8f8f8;
+$cinza: #707070;
+$input: #e9e9e9;
+$bclaro: #E3E3E3;
+
+//cores do projeto
+$azul: #00354A;
+$azul_alt: #022F40;
+$azul2: #0073A2;
+$azul3: #46A1CB;
+$azul4: #91C0DF;
+$azul5: #E9FAFE;
+$amarelo: #FFA200;
+$amarelo2: #FEB23B;
+$amarelo3: #FFEEC6;
+$laranja: #CF6914;
+$laranja2: #F5861F;
+
+$bege: #F0F4E8;
+$verde: #23D7AA;
+$roxo: #5E415C;
+
+.azul{
+	color: $azul;
+}
+
+.azul2{
+	color: $azul2;
+}
+
+
+// mixins para tipografia
+@mixin fonte(){
+	font-family: 'acumin-pro', 'Calibri', 'Lucida Grande', sans-serif;
+}
+
+@mixin fdest(){
+	font-family: 'acumin-pro', 'Calibri', 'Lucida Grande', sans-serif;
+}
+
+@mixin fsize($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+
+// tamanhos de breakpoints
+$maxwidth: 1440px;
+$ipadport: 1100px;
+$ipad: 1050px;
+$mobile: 1100px;
+
+// mixins para responsivo
+
+@mixin bp($device-width) {
+  @media screen and (max-width: $device-width - 1) {
+    @content;
+  }
+}
+
+@mixin bpland($device-width) {
+  @media screen and (max-width: $device-width - 1) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin bpport($device-width) {
+  @media screen and (max-width: $device-width - 1) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+    @content; 
+  }
+}
+
+//MIXIN BOX-SHADOW
+@mixin bshadow($distx, $disty, $blur, $cor){
+	-webkit-box-shadow: $distx $disty $blur 0px $cor;
+	-moz-box-shadow: $distx $disty $blur 0px $cor;
+	box-shadow: $distx $disty $blur 0px $cor;
+}
+
+
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+// ==========================================================================
+// Resets e Configurações básicas
+// ==========================================================================
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, 
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+	&:hover{
+		text-decoration: none;
+	}
+	&:active{
+    	text-decoration: none;
+	}
+}
+
+strong, b{
+	font-weight: bold;
+}
+em{
+	font-style: italic;
+}
+
+input:focus, textarea:focus, select:focus{
+	outline: none !important;
+}

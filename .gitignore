@@ -1,4 +1,5 @@
 .env
+.htpasswd
 /wp-content/plugins
 /wp-content/uploads
 /wp-content/languages

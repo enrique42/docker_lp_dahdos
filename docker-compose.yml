@@ -46,6 +46,7 @@ services:
       - ./wp-content:/var/www/html/wp-content:rw
       - wordpress:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
+      - ./.htpasswd:/etc/nginx/.htpasswd:ro
       - certbot-etc:/etc/letsencrypt
     networks:
       - app-network

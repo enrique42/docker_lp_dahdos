@@ -16,7 +16,7 @@ if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
     wp_register_script('userlodash', 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js', array('jquery'), '1.0', true);
     wp_enqueue_script('userlodash');
     
-    wp_register_script('slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js', array('jquery'), '1.0', true);
+    wp_register_script('slick', 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js', array('jquery'), '1.0', true);
     wp_enqueue_script('slick');
    
     $arquivo = get_template_directory_uri().'/js/main.js';
@@ -50,7 +50,7 @@ if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
     wp_register_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css', array(), '6.1.1', 'all');
     wp_enqueue_style('fontawesome');
 
-    wp_register_style('slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', array(), '1.0', 'all');
+    wp_register_style('slick', 'https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', array(), '1.0', 'all');
     wp_enqueue_style('slick');
     
     wp_register_style('stylecss', $arquivo, array(), $ver, 'all');

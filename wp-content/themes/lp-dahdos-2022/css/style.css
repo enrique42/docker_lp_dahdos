@@ -801,7 +801,7 @@ body {
   }
   .burger img {
     display: block;
-    width: 12vw;
+    width: 15vw;
   }
   .burger.show-mob {
     left: -20vw;
@@ -1072,10 +1072,18 @@ body {
 .botao .hexagono {
   position: absolute;
   top: 0;
-  right: -4.7rem;
+  right: -4.2rem;
   height: 100%;
   width: 10rem;
   color: #5E415C;
+}
+.botao .hexagono.branco svg {
+  fill: #fff;
+}
+@media screen and (max-width: 1099px) {
+  .botao .hexagono {
+    right: -4.5rem;
+  }
 }
 .botao:hover {
   background-color: #7c567a;
@@ -1105,10 +1113,15 @@ body {
   position: absolute;
   top: 0;
   right: auto;
-  left: -4.7rem;
+  left: -4.2rem;
   height: 100%;
   width: 10rem;
   color: #5E415C;
+}
+@media screen and (max-width: 1099px) {
+  .botao.invertido .hexagono {
+    left: -4.5rem;
+  }
 }
 .botao.menor {
   padding: 0 2.5em;
@@ -1410,7 +1423,7 @@ body {
 }
 @media screen and (max-width: 1099px) {
   .lp-capa .container-logo {
-    height: 70vh;
+    height: 60vh;
   }
 }
 .lp-capa .container-logo .lf {
@@ -1476,6 +1489,11 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
 }
+@media screen and (max-width: 1099px) {
+  .lp-capa .alinha-botao .hexagono .icone img {
+    width: 4vw;
+  }
+}
 .lp-capa .bloco-texto p {
   margin-bottom: 2em;
 }
@@ -1487,7 +1505,7 @@ body {
 }
 @media screen and (max-width: 1099px) {
   .lp-capa .abertura {
-    height: 30vh;
+    height: 40vh;
   }
 }
 .lp-capa .introducao {
@@ -1647,25 +1665,27 @@ body {
 }
 .lp-telas .slide-tela .tela .box-branco {
   width: 100%;
-  height: 31.75vw;
+  height: 26.5vw;
   background-color: #fff;
-  padding: 2.775vw;
   border-radius: 30px;
+  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width: 1099px) {
   .lp-telas .slide-tela .tela .box-branco {
-    height: 55vw;
-    padding: 6vw;
+    height: 42vw;
+    padding: 0;
   }
 }
 .lp-telas .slide-tela .tela .box-branco img {
   display: block;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
      object-position: center;
   width: 100%;
   height: 100%;
+  border-radius: 30px;
 }
 .lp-telas .slide-tela .tela .hexagono {
   position: absolute;
@@ -1688,7 +1708,7 @@ body {
 }
 @media screen and (max-width: 1099px) {
   .lp-telas .bloco-slideshow-telas .a-prev, .lp-telas .bloco-slideshow-telas .a-next {
-    top: 25vw;
+    top: 21vw;
     margin-top: 0;
     left: 0vw;
   }
@@ -2149,6 +2169,8 @@ body {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    position: relative;
+    left: 3vw;
   }
   .lp-porquedahdos .bloco-grid-colmeia .grid-colmeia {
     width: 44.5vw;
@@ -2767,6 +2789,9 @@ body {
     margin: 0 auto;
     left: 0;
   }
+  .lp-parceria .bloco-parceria .parceiro .botao .hexagono {
+    left: -4.5rem;
+  }
 }
 .lp-parceria .bloco-parceria .parceiro .hexagono .icone img {
   width: 1vw;
@@ -2881,6 +2906,9 @@ body {
   border-radius: 1000px;
   background-color: #F0F4E8;
   border: none;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
   cursor: pointer;
 }
 @media screen and (max-width: 1099px) {
@@ -2925,6 +2953,18 @@ body {
     margin: 0 auto;
     margin-bottom: 2em;
   }
+}
+.lp-depoimentos .ndep-1 .slick-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100% !important;
 }
 .lp-depoimentos .slide-depo {
   width: 38.3vw;
@@ -3037,12 +3077,11 @@ body {
   z-index: 50;
   width: 150vw;
   height: 150vh;
-  background-image: url("../img/fundo-formulario.jpg");
+  background-image: url("../img/fundo-formulario-rev.jpg");
   background-position: center center;
-  background-size: 100% auto;
-  background-repeat: repeat-x;
-  -webkit-animation: moveBG3 120s linear infinite;
-          animation: moveBG3 120s linear infinite;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   opacity: 0.3;
 }
 @media screen and (max-width: 1099px) {
@@ -3062,16 +3101,29 @@ body {
 .lp-agende-visita .container {
   position: relative;
   z-index: 100;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .lp-agende-visita .lf {
+  width: 100%;
   padding: 6.5vw 0;
-  min-height: 100vh;
 }
 @media screen and (max-width: 1099px) {
   .lp-agende-visita .lf {
     padding: 13vw 0;
     min-height: 0;
   }
+}
+.lp-agende-visita .col-texto {
+  margin-top: -1vw;
 }
 @media screen and (max-width: 1099px) {
   .lp-agende-visita .col-texto {
@@ -3111,6 +3163,14 @@ body {
   border: none;
   border-radius: 10px;
   font-family: "acumin-pro", "Calibri", "Lucida Grande", sans-serif;
+  position: relative;
+}
+@media screen and (max-width: 1099px) {
+  .bloco-formulario .campo-input select {
+    line-height: 4em;
+    height: 4em;
+    padding: 0 1em;
+  }
 }
 .bloco-formulario .campo-cols {
   display: -webkit-box;
@@ -3188,10 +3248,36 @@ body {
   background-color: #F0F4E8;
   border-radius: 30px;
   padding: 3.25vw;
+  position: relative;
+  padding-bottom: 6vw;
 }
 @media screen and (max-width: 1099px) {
   .lp-faq .card-faq {
     padding: 8vw;
+    padding-bottom: 16vw;
+  }
+}
+.lp-faq .linha-botao {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.lp-faq .linha-botao .botao {
+  margin-top: -2em;
+}
+@media screen and (max-width: 1099px) {
+  .lp-faq .linha-botao .botao .hexagono img {
+    width: 2vw;
   }
 }
 .lp-faq .titulo {

@@ -386,7 +386,7 @@
 <?php } ?>
 
 <?php if (get_field('mostrar_depoimentos')) { ?>
-
+<?php $sz = count(get_field('depoimentos')); ?>
 <div class='section lp-depoimentos'>
 	<div class="fundo-cam-1"></div>
 	<div class="fundo-cam-2"></div>
@@ -395,7 +395,7 @@
 		<div class="bloco-slideshow bloco-slideshow-depoimentos">
 			<div class="a-prev"><img src='<?php echo get_template_directory_uri(); ?>/img/ico-seta-right.svg' alt=''></div>
 			<div class="a-next"><img src='<?php echo get_template_directory_uri(); ?>/img/ico-seta-right.svg' alt=''></div>
-			<div class="slideshow-depoimentos">
+			<div class="slideshow-depoimentos ndep-<?php echo $sz; ?>">
 				<?php foreach(get_field('depoimentos')?:[] as $cada) { ?>
 				<div class="slide-depo">
 					<div class="inside-depo">
@@ -421,7 +421,7 @@
 <div class='section lp-agende-visita' id="agende">
 	<div class="fundo-agende"></div>
 	<div class='container'>
-		<div class="lf aic jcsb">
+		<div class="lf aifs jcsb">
 			<div class="coluna-6 col-texto">
 				<h2><?php echo simple_md(get_field('agendamento_titulo')) ?></h2>
 				<p><?php echo simple_md(get_field('agendamento_chamada')) ?></p> 
@@ -485,7 +485,7 @@
 			</ul>
 
 			<div class="faq-gavetas">
-				<div class="gaveta" v-for="cada in perguntas_filtradas">
+				<div class="gaveta" v-for="(cada,i) in perguntas_filtradas" v-show="mostra_mais || (i < 3)">
 					<div class="gaveta-titulo" @click.prevent="abregaveta">   
 						<h3>{{cada.pergunta}}</h3> 
 						<div class="hexagono">
@@ -497,6 +497,16 @@
 						<div class="inside-gaveta" v-html="cada.resposta"></div>
 					</div>
 				</div>
+			</div>
+
+			<div class="linha-botao" v-if="mostra_mais == false" @click.prevent="mostra_mais = true">
+				<a href="" class="botao bg-roxo">
+					<span>CARREGAR MAIS PERGUNTAS</span>
+					<div class="hexagono branco">
+						<?php echo get_template_part('img/hex', 'base2'); ?>
+						<div class="icone"><img src='<?php echo get_template_directory_uri(); ?>/img/ico-mais-verde.svg' alt=''></div>
+					</div>
+				</a>
 			</div>
 
 		</div>	

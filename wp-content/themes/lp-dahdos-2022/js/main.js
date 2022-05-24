@@ -53,6 +53,7 @@ var proj = (function ($) {
           nextArrow: slider.parent().find(".a-next"),
           dots: false,
           adaptiveHeight: false,
+		  centered: true,
 		  responsive: [
             {
               breakpoint: 900,
@@ -166,6 +167,7 @@ var proj = (function ($) {
           faq: parametros.faq,
           busca: '',
           tema: false,
+          mostra_mais: false,
         },
         methods: {
           abregaveta: function(oque) {
@@ -197,6 +199,7 @@ var proj = (function ($) {
               }
             }
             $( ".gaveta" ).removeClass('ativo');
+            vthis.mostra_mais = retorno.length <= 3;  
             return retorno;
           }
         },

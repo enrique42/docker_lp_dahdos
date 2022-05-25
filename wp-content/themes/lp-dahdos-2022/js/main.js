@@ -22,6 +22,16 @@ var proj = (function ($) {
 		$('.section-header, .burger').toggleClass('show-mob');
 	});
 
+	$('.grid-indicadores-mobile .indica').on('click', function(e){
+		e.preventDefault();
+		if ($(this).hasClass('ativo')) {
+			$('.grid-indicadores-mobile .indica').removeClass('ativo');
+		} else {
+			$('.grid-indicadores-mobile .indica').removeClass('ativo');
+			$(this).addClass('ativo');
+		}
+	});
+
 	// Estado inicial
 	var scrollPos = 0;
 	var sHeader = $('.section-header');
@@ -124,23 +134,33 @@ var proj = (function ($) {
     }
 
     $( ".ind-l1-c3" ).mouseenter(function() {
-	  $( ".indica" ).removeClass('inativo');	
+	    $( ".indica" ).removeClass('inativo');	
       $( ".ind-l1-c2, .ind-l2-c2, .ind-l2-c3" ).addClass('inativo');
-	  $( ".preenchida" ).removeClass('ativo');
+	    $( ".preenchida" ).removeClass('ativo');
     });
     $( ".ind-l2-c2" ).mouseenter(function() {
-	  $( ".indica" ).removeClass('inativo');
+	    $( ".indica" ).removeClass('inativo');
       $( ".ind-l2-c1, .ind-l3-c1, .ind-l3-c2" ).addClass('inativo');
-	  $( ".preenchida" ).removeClass('ativo');
+	    $( ".preenchida" ).removeClass('ativo');
     });
     $( ".ind-l3-c3" ).mouseenter(function() {
-	  $( ".indica" ).removeClass('inativo');
+	    $( ".indica" ).removeClass('inativo');
       $( ".ind-l3-c2, .ind-l2-c2, .ind-l2-c3" ).addClass('inativo');
-	  $( ".preenchida" ).removeClass('ativo');
+	    $( ".preenchida" ).removeClass('ativo');
     });
-    $( ".ind-l1-c3, .ind-l2-c2, .ind-l3-c3" ).mouseleave(function() {
-		$( ".preenchida" ).removeClass('ativo');
-        $( ".indica" ).removeClass('inativo');
+    $( ".ind-l1-c1" ).mouseenter(function() {
+      $( ".indica" ).removeClass('inativo');
+      $( ".ind-l1-c2, .ind-l2-c1, .ind-l2-c2" ).addClass('inativo');
+      $( ".preenchida" ).removeClass('ativo');
+    });
+    $( ".ind-l3-c1" ).mouseenter(function() {
+      $( ".indica" ).removeClass('inativo');
+      $( ".ind-l2-c1, .ind-l2-c2, .ind-l3-c2" ).addClass('inativo');
+      $( ".preenchida" ).removeClass('ativo'); 
+    });
+    $( ".ind-l1-c3, .ind-l2-c2, .ind-l3-c3, .ind-l1-c1, .ind-l3-c1" ).mouseleave(function() {
+		  $( ".preenchida" ).removeClass('ativo');
+      $( ".indica" ).removeClass('inativo'); 
     });
 
 	// observer, para animação na rolagem da página
@@ -159,6 +179,27 @@ var proj = (function ($) {
 		var cada = $(this);
 		observerIndica.observe(cada[0]);
 	});
+
+    if ($('#vue-indicadores').length > 0) {
+      var vue_indicadores = new Vue({
+        el: '#vue-indicadores',
+        data: {
+          indicadores: parametros.indicadores,
+          aberto: 0,
+        },
+        methods: {
+
+        },
+        computed: {
+          indicador_aberto: function(){
+            return this.indicadores[this.aberto];
+          }
+        },
+        created: function () {
+
+        }
+      });
+    }
 
     if ($('#vue-faq').length > 0) {
       var vue_faq = new Vue({

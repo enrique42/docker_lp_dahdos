@@ -675,7 +675,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "38",
                         "class": "",
                         "id": ""
                     },
@@ -699,12 +699,31 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "38",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
                     "placeholder": ""
+                },
+                {
+                    "key": "field_628e147793639",
+                    "label": "Nome",
+                    "name": "nome",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "24",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -776,8 +795,8 @@
                 "id": ""
             },
             "collapsed": "",
-            "min": 3,
-            "max": 3,
+            "min": 5,
+            "max": 5,
             "layout": "table",
             "button_label": "Adicionar Indicador",
             "sub_fields": [
@@ -1711,7 +1730,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 1,
+                    "rows": 3,
                     "new_lines": "br"
                 },
                 {
@@ -1898,7 +1917,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Dahdos 2022 Todos os direitos reservados.\r\nDesenvolvido por Fábrica Brasileira de Ideias",
+            "default_value": "Dahdos 2022 Todos os direitos reservados.\r\nDesenvolvido por Fábrica de Ideias Brasileiras",
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
@@ -1989,5 +2008,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1653043130
+    "modified": 1653479538
 }

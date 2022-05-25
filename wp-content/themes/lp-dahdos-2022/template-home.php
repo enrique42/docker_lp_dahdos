@@ -163,7 +163,15 @@
 				<h2 class="titulo"><?php echo simple_md(get_field('clientes_titulo')) ?></h2>
 		
 				<ul class="grid-logos">
-					<?php foreach(get_field('clientes_logos')?:[] as $cada) { ?>
+					<?php 
+						$clientes = get_field('clientes_logos')?:[];
+						usort($clientes, function($a, $b){ 
+							$a=strtolower($a['nome']?:'');
+							$b=strtolower($b['nome']?:'');
+							return ($a == $b) ? 0 : (($a < $b) ? -1 : 1);
+						});
+					?>
+					<?php foreach($clientes as $cada) { ?>
 					<li><a target="_blank" href="<?php echo esc_url($cada['link']) ?>"><img src='<?php echo $cada['logo'] ?>' alt=''></a></li>
 					<?php } ?> 
 				</ul>
@@ -178,7 +186,11 @@
 
 <?php if (get_field('mostrar_indicadores')) { ?>
 
-<?php $indicadores = get_field('indicadores'); $ind1 = $indicadores[0]; $ind2 = $indicadores[1]; $ind3 = $indicadores[2];?>
+<?php 
+	$indicadores = get_field('indicadores'); 
+	$ind1 = $indicadores[0]; $ind2 = $indicadores[1]; $ind3 = $indicadores[2];
+	$ind4 = $indicadores[3]?:array('numero'=>'','descricao'=>''); $ind5 = $indicadores[4]?:array('numero'=>'','descricao'=>'');
+?>
 
 <div class='section lp-indicadores observe-indica'>
 	<div class='container'>
@@ -188,9 +200,12 @@
 			</div>
 
 			<div class="grid-indicadores">
-				<div class="indica ind-l1-c1">
+				<div class="indica ind-l1-c1 preenchida">
 					<div class="inside">
-						<div class="circulo"></div>
+						<div class="circulo">
+							<span><?php echo simple_md($ind4['numero']) ?></span>
+							<div><?php echo $ind4['descricao'] ?></div>
+						</div>
 					</div>
 				</div>
 				<div class="indica ind-l1-c2">
@@ -224,9 +239,12 @@
 						<div class="circulo"></div>
 					</div>
 				</div>
-				<div class="indica ind-l3-c1">
+				<div class="indica ind-l3-c1 preenchida">
 					<div class="inside">
-						<div class="circulo"></div>
+						<div class="circulo">
+							<span><?php echo simple_md($ind5['numero']) ?></span>
+							<div><?php echo $ind5['descricao'] ?></div>
+						</div>
 					</div>
 				</div>
 				<div class="indica ind-l3-c2">
@@ -260,36 +278,29 @@
 			</div>
 		</div>
 
-		<div class="grid-indicadores-mobile">
-			<div class="inside">
-				<div class="circulo">
-					<span><?php echo simple_md($ind1['numero']) ?></span>
-					<div><?php echo $ind1['descricao'] ?></div>
+		<div class="grid-indicadores-mobile" id="vue-indicadores"> 
+			<div class="topo-mobile">
+				<div class="indica a1 ativo">
+					<div class="inside">
+						<div class="circulo">
+							<span>{{indicador_aberto.numero}}</span>
+							<div v-html="indicador_aberto.descricao"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 
-			<div class="inside">
-				<div class="circulo">
-					<span><?php echo simple_md($ind2['numero']) ?></span>
-					<div><?php echo $ind2['descricao'] ?></div>
+			<div class="grid-mobile">
+				<div class="indica" v-for="(cada,i) in indicadores" v-show="i !== aberto" @click.prevent="aberto = i"> 
+					<div class="inside">
+						<div class="circulo">
+							<span>{{cada.numero}}</span>
+							<div v-html="cada.descricao"></div>
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="inside">
-				<div class="circulo">
-					<span><?php echo simple_md($ind3['numero']) ?></span>
-					<div><?php echo $ind3['descricao'] ?></div>
-				</div>
-			</div>
-
-			<div class="arte-bg">
-				<div class="circulo"></diV>	
-				<div class="spacer"></div>
-				<div class="circulo"></diV>
-				<div class="circulo"></diV>
-				<div class="spacer"></div>
-				<div class="circulo"></diV>
-			</div>
+			
 		</div>
 	</div>
 </div>
@@ -521,7 +532,7 @@
 	<div class='container'>
 		<div class="lf aic jcsb">
 			<div class="coluna-4 intro">
-				<h2><?php echo simple_md(get_field('ebook_titulo')) ?></h2>
+				<!-- <h2><?php //echo simple_md(get_field('ebook_titulo')) ?></h2> -->
 				<?php the_field('ebook_texto') ?>
 			</div>
 

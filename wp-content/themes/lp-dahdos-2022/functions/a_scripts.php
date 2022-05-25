@@ -31,7 +31,8 @@ if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 	global $post;
 
     if (is_page_template('template-home.php')) {
-        $parameters['faq'] = get_field('faq'); 
+        $parameters['faq'] = get_field('faq');
+        $parameters['indicadores'] = get_field('indicadores'); 
     }
 
     wp_register_script('main', $arquivo, array('jquery'), $ver, true);
